@@ -1,0 +1,153 @@
+﻿@model GIVE.Models.KidModel
+@{
+    ViewBag.Title = "My Wallet";
+    ViewBag.PageHeader = "My Wallet";
+}
+<main class="main-content bgc-grey-100">
+    <div id="">
+        <div id="container-fluid">
+            <div class="row">
+
+                <div class="col-md-8">
+                    <div class="bdrs-3 ov-h bgc-white bd ">
+
+                        <div class="bgr-n bgpX-c bgpY-c bgsz-cv bg-head bgc-grey-700 ta-l p-15">
+                            <!--<a href="sub-wallet.html"><div id="link_overlay"></div></a>-->
+                            <div class="menu-btn row pL-5 pR-5">
+                                <!--<a style="width:10%"id="sidebar-toggle" class="sidebar-toggle toggle-btn text-white pL-10 " href="javascript:void(0);">
+                                    <i class="ti-menu"></i>
+                                </a>-->
+                                <h5 style="width:90%" class="text-white pL-10 fw-600">My Wallet</h5>
+
+                                <div style="width:10%" class="fl-r ta-l -5">
+                                    <span class="help-circle">
+                                        <i class=" help ti-help"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="sun-img">
+                                <img src="~/Content/assets/static/images/sun.png" />
+                            </div>
+                            <div class="tree-img">
+                               <a href="@Url.Action("SubWallet","Home", new { id = @ViewBag.id })">
+                                    <img src="~/Content/assets/static/images/tree.png" />
+                                </a>
+                            </div>
+
+                            <h6 class="amt-pdd give-amt-title mB-0 pB-0 fw-600 c-white">Give Amount</h6>
+                            <h3 class="give-amt pB-0 mB-0 fw-600 c-white">
+
+                           <a href="@Url.Action("Transaction","Home", new { id = @ViewBag.id })">
+                       @ViewBag.balance
+</a>
+
+                            </h3>
+                        </div>
+
+                        <div class="pos-r pL-5 pR-5">
+                            <a href="@Url.Action("SendGIV","Home", new { id = @ViewBag.id })">
+                                <img class="mT-nv-30 pos-r r-10 t-2 fl-r send-giv-btn" src="~/Content/assets/static/images/fab.png" />
+                            </a>
+
+                            <br>
+
+                            <h5 class="pT-10 pL-15  lh-1 head-text fw-600">Donate GIV</h5>
+
+                        </div>
+
+                        <div class="m-10 row pL-5 pR-5">
+
+                            <div class="p-3 img-box2">
+                                <a class="link-style" href="donate_giv1.html">
+                                    <img class="product-img2" src="~/Content/assets/static/images/charity_card2.png"></img>
+                                </a>
+                            </div>
+
+
+                            <div class="p-3 img-box2">
+                                <a class="link-style" href="#">
+                                    <img class="product-img2" src="~/Content/assets/static/images/charity_card.png"></img>
+                                </a>
+                            </div>
+
+
+                            <div class="p-3 img-box2">
+                                <a class="link-style" href="#">
+                                    <img class="product-img2" src="~/Content/assets/static/images/charity_card1.jpg"></img>
+                                </a>
+
+                            </div>
+
+                        </div>
+                        <a class="link-style" href="#">
+                            <h6 class="pL-20 fw-600 ">
+                                <i class="ti-arrow-right"></i>&emsp;View More
+                            </h6>
+                        </a>
+                        <hr>
+                        <h5 class="pT-10 pL-15  lh-1 head-text fw-600">Earn GIV</h5>
+                        <div class="mT-20 form-group pL-5 pR-5">
+                            <div class="box-shdw filter-box m-10 p-10">
+                                <h5 class="sub-head-text fw-600">Tutor Classmate</h5>
+                                <h6 class="simple-text">
+                                    Lorem ipsum dolor sit amet,sit consectetur adipiscing elit...
+                                    <h6>
+                                        <div class=" peers fxw-nw ai-c bdB bgc-gray cur-p">
+                                            <div class="peer">
+                                                <img src="~/Content/assets/static/images/userpic_3.jpg" alt="" class="w-2r h-2r bdrs-50p">
+                                            </div>
+                                            <div class="peer peer-greed pL-20">
+                                                <div class="row">
+                                                    <h6 class="simple-text p-10 half-width fw-600">Lisa Banks</h6>
+                                                    <h5 class="pR-20 pT-5 fc-rtl  half-width fw-600 green-text">5 GIV</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="box-shdw filter-box m-10 p-10">
+                                <h5 class="sub-head-text fw-600">Car Washing</h5>
+                                <h6 class="simple-text">
+                                    Lorem ipsum dolor sit amet,sit consectetur adipiscing elit...
+                                    <h6>
+                                        <div class=" peers fxw-nw ai-c bdB bgc-gray cur-p">
+                                            <div class="peer">
+                                                <img src="~/Content/assets/static/images/userpic_4.jpg" alt="" class="w-2r h-2r bdrs-50p ">
+                                            </div>
+                                            <div class="peer peer-greed pL-20">
+                                                <div class="row">
+                                                    <h6 class="simple-text p-10 half-width fw-600  ">Aaron Adams</h6>
+                                                    <h5 class="pR-20 fc-rtl half-width fw-600 green-text pT-5">3 GIV</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="box-shdw filter-box m-10 p-10">
+                                <h5 class="sub-head-text fw-600">Sunday Cleaning</h5>
+                                <h6 class="simple-text">
+                                    Lorem ipsum dolor sit amet,sit consectetur adipiscing elit...
+                                    <h6>
+                                        <div class=" peers fxw-nw ai-c bdB bgc-gray cur-p">
+                                            <div class="peer">
+                                                <img src="~/Content/assets/static/images/userpic_2.jpg" alt="" class="w-2r h-2r bdrs-50p">
+                                            </div>
+                                            <div class="peer peer-greed pL-20">
+                                                <div class="row">
+                                                    <h6 class="p-10 half-width fw-600 simple-text">Ashley Simmons</h6>
+                                                    <h5 class="pR-20 fc-rtl half-width fw-600 green-text pT-5">2 GIV</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                            <a class="link-style" href="#">
+                                <h6 class="pL-20 fw-600 ">
+                                    <i class="ti-arrow-right"></i>&emsp;View More
+                                </h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

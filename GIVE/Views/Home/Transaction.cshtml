@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Send GIV";
+    ViewBag.PageHeader = "GIV Transfer";
+}
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+</style>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+   
+</script>
+
+<main class="main-content bgc-white">
+    <div id="mainContent">
+        <div class="bg-green menu-btn row">
+
+            <h5 align="left" style="width:70%" class="mL-20 m-10 text-white "><a href="send_giv1.html"><i class="ti-arrow-left text-white"></i></a>&emsp;Send GIV</h5>
+            <div style="width:10%" class="pT-15 fl-r p-5">
+                <span class="help-circle"><i class=" help ti-help"></i></span>
+            </div>
+        </div>
+        <div class="row gap-20 masonry pos-r">
+            <div class="masonry-sizer col-md-8"></div>
+            <div class="masonry-item col-md-8">
+
+                <div class="bgc-white p-10">
+                    <div class="mT-30">
+                        <form>
+                            <div class="bgc-grey-100 p-10 box-shdw box-border">
+                                <div class="form-group">
+               <table style="width:auto">
+  <tr>
+    <th>From Kid Id</th>
+    <th>To Kid Id</th> 
+<th>Amount</th> 
+    <th>From Comments</th> 
+ <th>To Comments</th> 
+<th>Transaction Date</th> 
+  </tr>
+ @foreach (var item in @ViewBag.Transaction)
+    {
+        <tr>
+            <td>@item.FromKidID</td>
+            <td>@item.ToAddress</td>
+            <td>@item.Amount</td>
+            <td>@item.Description</td>
+              <td>@item.ReceivedDescription</td>
+          <td>@item.TransactionDate</td>
+           
+        </tr>
+    }
+</table>
+                  
+   
+    
+
+                                </div>
+                                <hr>
+
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>

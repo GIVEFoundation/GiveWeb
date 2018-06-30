@@ -1,0 +1,76 @@
+﻿@model GIVE.Models.ChangePasswordViewModel
+@{
+    ViewBag.Title = "Change Password";
+}
+<main class="main-content bgc-grey-100">
+				 <div id="mainContent">
+				  <div id="container-fluid">
+					<div class="row">	
+						
+						<div class="col-md-8">
+							<!--<div class="bdrs-3 ov-h bgc-white bd " style="">-->
+							    
+							   <div class="bdrs-3 ov-h bd  bgr-n bgpX-c bgpY-c bgsz-cv sub-wallet bgc-grey-700 ta-l p-15">
+								   <div class="menu-btn row">
+
+										<div style="width:90%" class="text-white pL-15 fw-600"><h5><a href="mywallet.html"><i class="ti-arrow-left text-white"></i></a>&emsp;Sub-Wallets</h4></div>
+										
+										<div style="width:10%" class="fl-r ta-l -5">
+											<span class="help-circle"><i class=" help ti-help"></i></span>
+										</div>
+										
+									</div>
+									
+									<!--<h6 class="amt-pdd  mB-0 pB-0 fw-600 c-white">Give Amount</h6>
+									<h1 class="pB-0 mB-0 fw-600 c-white">103 000</h1>-->
+									<div class="sub-wallets-grid">
+										<div class="sub-wallet-button float-left sub-box-left-1 ta-c pT-5" ><a href="sub-wallet2.html"><span class="center c-red-900">Freedom</span><br><span class=" center c-red-900 fw-800"> @ViewBag.Freedom GIV</span></a></div>
+										<div class="sub-wallet-button float-right sub-box-right-1 ta-c pT-5" ><a href="sub-wallet2.html"><span class="center c-red-900">Saving</span><br><span class=" center c-red-900 fw-800"> @ViewBag.Savings GIV</span></a></div>
+										<div style="clear:both;"></div>
+										<div class="sub-wallet-button float-left sub-box-left-2 ta-c pT-5" ><a href="sub-wallet2.html"><span class="center c-red-900">Give</span><br><span class=" center c-red-900 fw-800"> @ViewBag.Give GIV</span></a></div>
+										<div class="sub-wallet-button float-right sub-box-right-2 ta-c pT-5" ><a href="sub-wallet2.html"><span class="center c-red-900">Play</span><br><span class=" center c-red-900 fw-800"> @ViewBag.Play GIV</span></a></div>
+										<div style="clear:both;"></div>
+										<div class="sub-wallet-button sub-box-1 ta-c pT-5" style="margin :0 auto;"><a href="sub-wallet2.html"><span class="center c-red-900">Education</span><br><span class=" center c-red-900 fw-800"> @ViewBag.Education GIV</span></a></div>
+										
+										<div style="clear:both;"></div>
+										
+									</div>
+									
+								</div>
+								
+								<!--<div class="bgc-grey-700 ta-r p-30">
+									<h6 class="c-white">Give Amount</h6>
+									<h1 class="c-white">103 GIV</h1>
+								</div>
+								
+								<div class="pos-r">
+									<button type="button" class="mT-nv-25 pos-r r-10 t-2 btn fl-r cur-p bdrs-50p p-0 w-3r h-3r btn-secondary earn-give-button">Earn GIV&nbsp;&nbsp;<i class="ti-plus"></i></button>
+							   
+									<br>
+									<h3 class="pT-20 pL-15  lh-1">Sub-Wallets</h3>
+								   <ul class="m-0 p-0 mT-10">
+									   <li class="bdB peers ai-c jc-sb fxw-nw">						 
+										<a style="color:grey; width:90%" href="form1.html"><div class="layer w-100 give_box"><small class="fw-600 c-grey-700">Freedom</small> <i class="pull-right ti-angle-right" style="margin:4px;"></i><span class="pull-right c-grey-600 fsz-sm">10 GIV</span><div class="progress mT-10"><div class="progress-bar bgc-blue-grey-600" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%"><span class="sr-only">10 GIV</span></div></div></div></a>
+									   </li>
+									   <li class="bdB peers ai-c jc-sb fxw-nw">						 
+										<a style="color:grey; width:90%" href="form1.html"><div class="layer w-100 give_box"><small class="fw-600 c-grey-700">Savings</small> <i class="pull-right ti-angle-right" style="margin:4px;"></i><span class="pull-right c-grey-600 fsz-sm">20 GIV</span><div class="progress mT-10"><div class="progress-bar bgc-blue-grey-600" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%"><span class="sr-only">20 GIV</span></div></div></div></a>
+									   </li>
+									   <li class="bdB peers ai-c jc-sb fxw-nw">						 
+										<a style="color:grey; width:90%" href="form1.html"><div class="layer w-100 give_box"><small class="fw-600 c-grey-700">Play</small> <i class="pull-right ti-angle-right" style="margin:4px;"></i><span class="pull-right c-grey-600 fsz-sm">60 GIV</span><div class="progress mT-10"><div class="progress-bar bgc-blue-grey-600" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%"><span class="sr-only">60 GIV</span></div></div></div></a>
+									   </li>
+									   <li class="bdB peers ai-c jc-sb fxw-nw">						 
+										<a style="color:grey; width:90%" href="form1.html"><div class="layer w-100 give_box"><small class="fw-600 c-grey-700">Education</small> <i class="pull-right ti-angle-right" style="margin:4px;"></i><span class="pull-right c-grey-600 fsz-sm">21 GIV</span><div class="progress mT-10"><div class="progress-bar bgc-blue-grey-600" role="progressbar" aria-valuenow="21" aria-valuemin="0" aria-valuemax="100" style="width:21%"><span class="sr-only">21 GIV</span></div></div></div></a>
+									   </li>
+									   <li class="bdB peers ai-c jc-sb fxw-nw">						 
+										<a style="color:grey; width:90%" href="form1.html"><div class="layer w-100 give_box"><small class="fw-600 c-grey-700">Give</small> <i class="pull-right ti-angle-right" style="margin:4px;"></i><span class="pull-right c-grey-600 fsz-sm">28 GIV</span><div class="progress mT-10"><div class="progress-bar bgc-blue-grey-600" role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" style="width:28%"><span class="sr-only">28 GIV</span></div></div></div></a>
+									   </li>
+				
+								   </ul>
+								</div>-->
+							<!--</div>-->
+						  </div>
+					</div>
+				   </div> 					 
+						<script>!function () { "use strict"; window.addEventListener("load", function () { var t = document.getElementById("needs-validation"); t.addEventListener("submit", function (e) { !1 === t.checkValidity() && (e.preventDefault(), e.stopPropagation()), t.classList.add("was-validated") }, !1) }, !1) }()</script>
+				 </div>
+				</main>

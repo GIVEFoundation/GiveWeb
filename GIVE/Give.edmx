@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="givedbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="givedbModelStoreContainer">
+          <EntitySet Name="KidBalance" EntityType="givedbModel.Store.KidBalance" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KidsData" EntityType="givedbModel.Store.KidsData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KidTransaction" EntityType="givedbModel.Store.KidTransaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubWallet" EntityType="givedbModel.Store.SubWallet" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__KidTransa__SubWa__5CD6CB2B" Association="givedbModel.Store.FK__KidTransa__SubWa__5CD6CB2B">
+            <End Role="SubWallet" EntitySet="SubWallet" />
+            <End Role="KidTransaction" EntitySet="KidTransaction" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="KidBalance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="KidId" Type="int" />
+          <Property Name="Balance" Type="bigint" />
+          <Property Name="Freedom" Type="int" />
+          <Property Name="Savings" Type="int" />
+          <Property Name="Give" Type="int" />
+          <Property Name="Play" Type="int" />
+          <Property Name="Education" Type="int" />
+        </EntityType>
+        <EntityType Name="KidsData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="PrimaryID" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="KidTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FromKidID" Type="int" />
+          <Property Name="ToAddress" Type="varchar(max)" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="TransactionDate" Type="datetime" />
+          <Property Name="SubWalletType" Type="int" />
+          <Property Name="ReceivedDescription" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SubWallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SubWalletType" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__KidTransa__SubWa__5CD6CB2B">
+          <End Role="SubWallet" Type="givedbModel.Store.SubWallet" Multiplicity="0..1" />
+          <End Role="KidTransaction" Type="givedbModel.Store.KidTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubWallet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KidTransaction">
+              <PropertyRef Name="SubWalletType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="givedbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="givedbEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="KidBalances" EntityType="givedbModel.KidBalance" />
+          <EntitySet Name="KidsDatas" EntityType="givedbModel.KidsData" />
+          <EntitySet Name="KidTransactions" EntityType="givedbModel.KidTransaction" />
+          <EntitySet Name="SubWallets" EntityType="givedbModel.SubWallet" />
+          <AssociationSet Name="FK__KidBalanc__SubWa__5DCAEF64" Association="givedbModel.FK__KidBalanc__SubWa__5DCAEF64">
+            <End Role="SubWallet" EntitySet="SubWallets" />
+            <End Role="KidBalance" EntitySet="KidBalances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KidTransa__SubWa__5CD6CB2B" Association="givedbModel.FK__KidTransa__SubWa__5CD6CB2B">
+            <End Role="SubWallet" EntitySet="SubWallets" />
+            <End Role="KidTransaction" EntitySet="KidTransactions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="KidBalance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="KidId" />
+          <Property Type="Int64" Name="Balance" />
+          <Property Type="Int32" Name="Freedom" />
+          <Property Type="Int32" Name="Savings" />
+          <Property Type="Int32" Name="Give" />
+          <Property Type="Int32" Name="Play" />
+          <Property Type="Int32" Name="Education" />
+          <NavigationProperty Name="SubWallet" Relationship="givedbModel.FK__KidBalanc__SubWa__5DCAEF64" FromRole="KidBalance" ToRole="SubWallet" />
+        </EntityType>
+        <EntityType Name="KidsData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PrimaryID" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="KidTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="FromKidID" />
+          <Property Type="String" Name="ToAddress" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Amount" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="TransactionDate" Precision="3" />
+          <Property Type="Int32" Name="SubWalletType" />
+          <NavigationProperty Name="SubWallet" Relationship="givedbModel.FK__KidTransa__SubWa__5CD6CB2B" FromRole="KidTransaction" ToRole="SubWallet" />
+          <Property Type="String" Name="ReceivedDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubWallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="SubWalletType" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="KidBalances" Relationship="givedbModel.FK__KidBalanc__SubWa__5DCAEF64" FromRole="SubWallet" ToRole="KidBalance" />
+          <NavigationProperty Name="KidTransactions" Relationship="givedbModel.FK__KidTransa__SubWa__5CD6CB2B" FromRole="SubWallet" ToRole="KidTransaction" />
+        </EntityType>
+        <Association Name="FK__KidBalanc__SubWa__5DCAEF64">
+          <End Type="givedbModel.SubWallet" Role="SubWallet" Multiplicity="0..1" />
+          <End Type="givedbModel.KidBalance" Role="KidBalance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubWallet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KidBalance">
+              <PropertyRef Name="Freedom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KidTransa__SubWa__5CD6CB2B">
+          <End Type="givedbModel.SubWallet" Role="SubWallet" Multiplicity="0..1" />
+          <End Type="givedbModel.KidTransaction" Role="KidTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubWallet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KidTransaction">
+              <PropertyRef Name="SubWalletType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="givedbModelStoreContainer" CdmEntityContainer="givedbEntities">
+          <EntitySetMapping Name="KidBalances">
+            <EntityTypeMapping TypeName="givedbModel.KidBalance">
+              <MappingFragment StoreEntitySet="KidBalance">
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Play" ColumnName="Play" />
+                <ScalarProperty Name="Give" ColumnName="Give" />
+                <ScalarProperty Name="Savings" ColumnName="Savings" />
+                <ScalarProperty Name="Freedom" ColumnName="Freedom" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="KidId" ColumnName="KidId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KidsDatas">
+            <EntityTypeMapping TypeName="givedbModel.KidsData">
+              <MappingFragment StoreEntitySet="KidsData">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PrimaryID" ColumnName="PrimaryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KidTransactions">
+            <EntityTypeMapping TypeName="givedbModel.KidTransaction">
+              <MappingFragment StoreEntitySet="KidTransaction">
+                <ScalarProperty Name="ReceivedDescription" ColumnName="ReceivedDescription" />
+                <ScalarProperty Name="SubWalletType" ColumnName="SubWalletType" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ToAddress" ColumnName="ToAddress" />
+                <ScalarProperty Name="FromKidID" ColumnName="FromKidID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubWallets">
+            <EntityTypeMapping TypeName="givedbModel.SubWallet">
+              <MappingFragment StoreEntitySet="SubWallet">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SubWalletType" ColumnName="SubWalletType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

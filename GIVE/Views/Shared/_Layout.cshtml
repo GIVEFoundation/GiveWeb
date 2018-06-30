@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/style.css")
+</head>
+<body class="app">
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <script type="text/javascript">
+        window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        setTimeout(() => {
+          loader.classList.add('fadeOut');
+        }, 200);
+      });
+    </script>
+    <div>
+        <div class="sidebar">
+            <div class="sidebar-inner">
+                <div class="sidebar-logo">
+                    <div class="peers ai-c fxw-nw">
+                        <div class="peer peer-greed">
+                            <a class="sidebar-link td-n" href="profile.html" class="td-n">
+                                <div class="peers ai-c fxw-nw">
+                                    <div class="peer">
+                                        <div class="logo">
+                                            <img style="width:50px; " src="~/Content/assets/static/images/user1.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="peer peer-greed">
+                                        <h5 class="lh-1 mB-0 logo-text">Sean Kim</h5>
+
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="peer">
+                            <div class="mobile-toggle sidebar-toggle">
+                                <a href="#" class="td-n">
+                                    <i class="ti-arrow-circle-left"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="sidebar-menu scrollable pos-r">
+                    <li class="nav-item mT-30 active">
+                        <a class="sidebar-link" href="profile_settings.html" default>
+                            <span class="title">Profile Settings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sidebar-link" href="#">
+                            <span class="title">Charity Classified</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sidebar-link" href="#">
+                            <span class="title">Incentives</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sidebar-link" href="#">
+                            <span class="title">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-container">
+            <div class="header navbar">
+                <div class="header-container">
+                    <ul class="nav-left">
+                        <li>
+                            <a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);">
+                                <i class="ti-menu"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <h3 class="" style="margin:10px;">@ViewBag.PageHeader</h3>
+                        </li>
+                    </ul>
+                    <ul class="nav-right">
+                        <li class="pR-2 pT-10  notifications dropdown">
+                            <span class="alert-circleh">3</span>
+                        </li>
+                        <li class="pL-2 pT-15 pR-20 ">
+                            <span class="help-circle">
+                                <i class=" help ti-help"></i>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            @RenderBody()
+            <footer class="bdT ta-c p-10 lh-0 fsz-sm c-grey-600">
+                <a class="link-style" href="#" title="Community">
+                    <span>
+                        <img class="img-icon" src="~/Content/assets/static/images/icommunity.png" />
+                    </span>
+                </a>
+                <a class="link-style" href="store1.html" title="Store">
+                    <span>
+                        <img class="img-icon" src="~/Content/assets/static/images/istore.png" />
+                    </span>
+                </a>
+                <a class="link-style" href="mywallet.html" title="My Wallet">
+                    <span>
+                        <img class="img-icon" src="~/Content/assets/static/images/iactivewallet.png" />
+                    </span>
+                </a>
+                <a class="link-style" href="charity_classified1.html" title="Charity">
+                    <span>
+                        <img class="img-icon" src="~/Content/assets/static/images/icharity.png" />
+                    </span>
+                </a>
+                <a id="sidebar-toggle" class="toggle-btn sidebar-toggle" href="javascript:void(0);" title="Main Menu">
+                    <span>
+                        <img class="img-icon" src="~/Content/assets/static/images/imenu.png" />
+                        </i>
+                    </span>
+                </a>
+
+            </footer>
+        </div>
+        </div>
+        @Scripts.Render("~/Content/vendor.js")
+        @Scripts.Render("~/Content/bundle.js")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

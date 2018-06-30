@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f90528667654779b3c60429cba3da0a" Name="Diagram1">
+        <EntityTypeShape EntityType="givedbModel.KidBalance" Width="1.5" PointX="11.88207107590608" PointY="9.760121752396282" />
+        <EntityTypeShape EntityType="givedbModel.KidsData" Width="1.5" PointX="3.2099099081055775" PointY="12.233554130528846" />
+        <EntityTypeShape EntityType="givedbModel.KidTransaction" Width="1.5" PointX="1.3995811182072298" PointY="5.10054852305937" />
+        <EntityTypeShape EntityType="givedbModel.SubWallet" Width="1.5" PointX="0.89334030677254339" PointY="9.2915310902947237" />
+        <AssociationConnector Association="givedbModel.FK__KidBalanc__SubWa__5DCAEF64" />
+        <AssociationConnector Association="givedbModel.FK__KidTransa__SubWa__5CD6CB2B" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

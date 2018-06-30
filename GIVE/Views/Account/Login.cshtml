@@ -1,0 +1,127 @@
+﻿@{
+    Layout = null;
+}
+
+
+<html>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+
+    <link href="~/Content/style.css" rel="stylesheet">
+    <style type="text/css">
+
+body{
+	padding:0;
+	margin:0;
+	background-image: url(../Content/assets/static/images/background.png);
+	background-size: contain;
+	background-position: center;
+}
+
+.signbox
+    {
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(../Content/assets/static/images/bgauthorization.png);
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat !important;
+		margin: 0;
+		padding: 0;
+		max-width: 600px;
+		margin: .5% auto;
+		max-height: 98%;
+		padding-top:18%;
+		min-height:700px !important;
+    }
+
+.login-button a{
+		opacity:0.7 !important;
+		color:#000 !important;
+	}
+	
+	.login-button a:hover{
+		opacity:0.9 !important;
+		
+	}
+
+/* start of desktop styles */
+
+@@media screen and (max-width: 991px) {
+     /* start of large tablet styles */
+
+}
+
+@@media screen and (max-width: 767px) {
+     /* start of medium tablet styles */
+
+}
+
+@@media screen and (max-width: 479px) {
+     /* start of phone styles */
+	.signbox
+    {
+
+		background-size: 100% auto;
+
+		max-width: 100%;
+		margin: 0 auto;
+		max-height: 100%;
+		padding-top:25%;
+		min-height:100% !important;
+    }
+
+}
+
+    </style>
+</head>
+<body class="app">
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <script type="text/javascript">
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+        setTimeout(() => {
+            loader.classList.add('fadeOut');
+        }, 200);
+        });
+    </script>
+ @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal",@id="login-form", role = "form" }))
+{
+    <div align="center" class="signbox">
+		
+									
+										
+											
+					
+					<div align="center" class="form-group">
+						<div class="row p-10 m-10">
+						   <label>Kid ID&nbsp; : </label>
+						   <input class="form-control" name="Kidid" id="Kidid" placeholder="Kid Id">
+						</div>
+						
+					</div>
+					<div align="center" class="form-group">
+						<div class="row p-10 m-10">
+						   <label>Password &nbsp; :</label>
+						   <input  type="password" class="form-control " name="password" placeholder="Password" required />
+						</div>
+						
+					</div>
+					
+					<div align="center"  class="form-group">
+						
+						<h4  class="login-button fw-600 pT-20"><a onclick="document.getElementById('login-form').submit();" style="cursor:pointer;">Login</a></h4>
+						
+					</div>
+									
+								
+		</div>
+}
+    <script type="text/javascript" src="~/Content/vendor.js">
+    </script>
+    <script type="text/javascript" src="~/Content/bundle.js"></script>
+</body>
+</html>
