@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="givedbModelStoreContainer" CdmEntityContainer="givedbEntities">
+    <EntitySetMapping Name="KidBalances">
+      <EntityTypeMapping TypeName="givedbModel.KidBalance">
+        <MappingFragment StoreEntitySet="KidBalance">
+          <ScalarProperty Name="Education" ColumnName="Education" />
+          <ScalarProperty Name="Play" ColumnName="Play" />
+          <ScalarProperty Name="Give" ColumnName="Give" />
+          <ScalarProperty Name="Savings" ColumnName="Savings" />
+          <ScalarProperty Name="Freedom" ColumnName="Freedom" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="KidId" ColumnName="KidId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KidsDatas">
+      <EntityTypeMapping TypeName="givedbModel.KidsData">
+        <MappingFragment StoreEntitySet="KidsData">
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PrimaryID" ColumnName="PrimaryID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KidTransactions">
+      <EntityTypeMapping TypeName="givedbModel.KidTransaction">
+        <MappingFragment StoreEntitySet="KidTransaction">
+          <ScalarProperty Name="ReceivedDescription" ColumnName="ReceivedDescription" />
+          <ScalarProperty Name="SubWalletType" ColumnName="SubWalletType" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ToAddress" ColumnName="ToAddress" />
+          <ScalarProperty Name="FromKidID" ColumnName="FromKidID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubWallets">
+      <EntityTypeMapping TypeName="givedbModel.SubWallet">
+        <MappingFragment StoreEntitySet="SubWallet">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SubWalletType" ColumnName="SubWalletType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CharityGroups">
+      <EntityTypeMapping TypeName="givedbModel.CharityGroup">
+        <MappingFragment StoreEntitySet="CharityGroup">
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CharityName" ColumnName="CharityName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginTypes">
+      <EntityTypeMapping TypeName="givedbModel.LoginType">
+        <MappingFragment StoreEntitySet="LoginType">
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

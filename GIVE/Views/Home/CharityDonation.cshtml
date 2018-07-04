@@ -1,0 +1,162 @@
+﻿
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+    function changeText() {
+        var textvalue = document.getElementById("givamt").value;;
+        document.getElementById("lblamount").innerText = textvalue;
+        document.getElementById("lblname").innerText = kidp;
+    }
+    $(document).ready(function () {
+        $('#confirm_link').click(function (event) {
+            var textvalue = document.getElementById("givamt").value;
+            var istrue = "NO";
+            if ($('#givamt').val() != "") {
+                //$.ajax({
+                //    type: "GET",
+                //    url: '@Url.Action("checkBalance", "Home")',
+                //    contentType: "application/json; charset=utf-8",
+                //    data: { kidid: kidp, amount: textvalue },
+                //    dataType: "json",
+                //    success: function (recData) {
+                        
+                //        if (recData == "YES") {
+                           
+                            
+                //        }
+                //        else {
+                //            event.preventDefault();
+                //        }
+                //    },
+                //    error: function () { alert('A error'); }
+                //});
+                $(this).attr('data-target', '#confirm');
+                // validate if at least one form field is populated
+                //alert("Well done, at least one form field is populated!");
+               
+                //event.preventDefault(); // to be removed when validation passed
+            }
+
+            else {
+                // all form fields empty, don't submit
+
+
+                event.preventDefault();
+
+            }
+
+        });
+    });
+
+</script>
+
+<main class="main-content bgc-white">
+					<div id="mainContent">
+					 <div class="bg-green menu-btn row">
+										
+										<h5 align="left" style="width:70%" class="mL-20 m-10 text-white " ><a href="donate_giv2.html"><i class="ti-arrow-left text-white"></i></a>&emsp;Donate GIV</h4>
+										<div style="width:10%" class="pT-15 fl-r p-5">
+											<span class="help-circle"><i class=" help ti-help"></i></span>
+										</div>
+									</div>
+						<div class="row gap-20 masonry pos-r">
+							<div class="masonry-sizer col-md-8"></div>
+							<div class="masonry-item col-md-8">
+							         
+								<div class="bgc-white p-10">
+									<div class="mT-30">
+										<form method="post">
+											 <div class="bgc-grey-100 p-10 box-shdw box-border">
+                                               @Html.Hidden("charirtyid", (string)ViewBag.charityid)
+                                                @Html.Hidden("fromid", (string)ViewBag.fromid)
+												 <div class="form-group pL-10">
+														<h6 class="simple-text pB-0">My Wallet</h6>
+														<h5 class="pT-0 head-text">@ViewBag.givabalance GIV</h5>
+												</div>
+												<div  class="arrw bgc-grey-100 pL-2 pR-2">
+													<img class="w-1r h-1r" src="~/Content/assets/static/images/arrow_back.png" />
+												</div>	
+												<hr>
+												<div class="form-group pL-10">
+														<h6 class="simple-text pB-0">@ViewBag.charityname</h6>
+														<h5 class="pT-0  head-text"></h5>
+												</div>
+											</div>
+										 <div class="form-group pT-20">
+                                <h6 class="head-text">How much GIV would you like to transfer ?</h6>
+
+                                <input type="text" class="form-control" name="givamt" id="givamt" placeholder="GIV Amount" required>
+                            </div>
+                            <div align="center" class="form-group">
+                                <a class="btn green-btn text-white" data-toggle="modal"  id="confirm_link"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Continue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            </div>
+                            <div class="modal fade" id="confirm" role="dialog" >
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div align="center" class="modal-body">
+                                            <div class="form-group">
+                                                <h6 class="simple-text">Confirm Transaction?</h6>
+                                            </div>
+                                            <div class="form-group">
+                                                <a class="txt-green fw-600" data-dismiss="modal">CANCEL</a>&emsp;
+                                                <a class="txt-green fw-600" data-toggle="modal" onclick='changeText()'  data-target="#giveconfirm">CONFIRM</a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="giveconfirm" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+
+                                        <div align="center" class="modal-body">
+                                            <div class="form-group">
+                                                <img class="msg-img" src="~/Content/assets/static/images/successful.png" alt="submit" />
+                                            </div>
+                                            <div class="form-group">
+                                                <h6 class="simple-text"> <label id="lblamount"></label> GIV were Successfully  transferred to <label id="lblname"></label></h6>
+                                            </div>
+                                            <div class="form-group">
+                                         <input type="submit" value="OK" class="txt-green fw-600" />
+                                                
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="givcancel" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+
+                                        <div align="center" class="modal-body">
+                                            <div class="form-group">
+                                                <img class="msg-img" src="~/Content/assets/static/images/unsuccessful.png" alt="submit" />
+                                            </div>
+                                            <div class="form-group">
+                                                <h6 class="simple-text">Something Went wrong during transaction</h6>
+                                            </div>
+                                            <div class="form-group">
+                                                <a href="mywallet.html" class="txt-green fw-600">RETRY</a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+

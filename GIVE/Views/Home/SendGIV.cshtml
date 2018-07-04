@@ -2,8 +2,7 @@
     ViewBag.Title = "Send GIV";
     ViewBag.PageHeader = "GIV Transfer";
 }
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
+
 <script type="text/javascript">
     function changeText() {
         var textvalue = document.getElementById("givamt").value;
@@ -60,7 +59,7 @@
     <div id="mainContent">
         <div class="bg-green menu-btn row">
 
-            <h5 align="left" style="width:70%" class="mL-20 m-10 text-white "><a href="send_giv1.html"><i class="ti-arrow-left text-white"></i></a>&emsp;Send GIV</h5>
+            <h5 align="left" style="width:70%" class="mL-20 m-10 text-white "><a href="@Url.Action("MyWallet","Home", new { @id = ViewBag.id })"><i class="ti-arrow-left text-white"></i></a>&emsp;Send GIV</h5>
             <div style="width:10%" class="pT-15 fl-r p-5">
                 <span class="help-circle"><i class=" help ti-help"></i></span>
             </div>

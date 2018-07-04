@@ -5,12 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3f90528667654779b3c60429cba3da0a" Name="Diagram1">
-        <EntityTypeShape EntityType="givedbModel.KidBalance" Width="1.5" PointX="11.88207107590608" PointY="9.760121752396282" />
+        <EntityTypeShape EntityType="givedbModel.KidBalance" Width="1.5" PointX="4.625" PointY="9.125" />
         <EntityTypeShape EntityType="givedbModel.KidsData" Width="1.5" PointX="3.2099099081055775" PointY="12.233554130528846" />
         <EntityTypeShape EntityType="givedbModel.KidTransaction" Width="1.5" PointX="1.3995811182072298" PointY="5.10054852305937" />
         <EntityTypeShape EntityType="givedbModel.SubWallet" Width="1.5" PointX="0.89334030677254339" PointY="9.2915310902947237" />
         <AssociationConnector Association="givedbModel.FK__KidBalanc__SubWa__5DCAEF64" />
         <AssociationConnector Association="givedbModel.FK__KidTransa__SubWa__5CD6CB2B" />
+        <EntityTypeShape EntityType="givedbModel.CharityGroup" Width="1.5" PointX="6.1866000547011382" PointY="4.5753993562308137" />
+        <EntityTypeShape EntityType="givedbModel.LoginType" Width="1.5" PointX="4.0259720236183938" PointY="8.96160722196177" />
+        <AssociationConnector Association="givedbModel.FK__CharityGr__Useri__6383C8BA" />
+        <AssociationConnector Association="givedbModel.FK__KidsData__Accoun__628FA481" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

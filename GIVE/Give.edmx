@@ -6,15 +6,35 @@
     <edmx:StorageModels>
     <Schema Namespace="givedbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="givedbModelStoreContainer">
+          <EntitySet Name="CharityGroup" EntityType="givedbModel.Store.CharityGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KidBalance" EntityType="givedbModel.Store.KidBalance" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KidsData" EntityType="givedbModel.Store.KidsData" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KidTransaction" EntityType="givedbModel.Store.KidTransaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LoginType" EntityType="givedbModel.Store.LoginType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SubWallet" EntityType="givedbModel.Store.SubWallet" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__CharityGr__Useri__6383C8BA" Association="givedbModel.Store.FK__CharityGr__Useri__6383C8BA">
+            <End Role="KidsData" EntitySet="KidsData" />
+            <End Role="CharityGroup" EntitySet="CharityGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KidsData__Accoun__628FA481" Association="givedbModel.Store.FK__KidsData__Accoun__628FA481">
+            <End Role="LoginType" EntitySet="LoginType" />
+            <End Role="KidsData" EntitySet="KidsData" />
+          </AssociationSet>
           <AssociationSet Name="FK__KidTransa__SubWa__5CD6CB2B" Association="givedbModel.Store.FK__KidTransa__SubWa__5CD6CB2B">
             <End Role="SubWallet" EntitySet="SubWallet" />
             <End Role="KidTransaction" EntitySet="KidTransaction" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="CharityGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CharityName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="Userid" Type="int" />
+        </EntityType>
         <EntityType Name="KidBalance">
           <Key>
             <PropertyRef Name="Id" />
@@ -36,6 +56,7 @@
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="PrimaryID" Type="nvarchar" MaxLength="1000" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Account" Type="int" />
         </EntityType>
         <EntityType Name="KidTransaction">
           <Key>
@@ -50,6 +71,13 @@
           <Property Name="SubWalletType" Type="int" />
           <Property Name="ReceivedDescription" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="LoginType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AccountType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="SubWallet">
           <Key>
             <PropertyRef Name="Id" />
@@ -58,6 +86,30 @@
           <Property Name="SubWalletType" Type="varchar" MaxLength="200" />
           <Property Name="Description" Type="varchar" MaxLength="200" />
         </EntityType>
+        <Association Name="FK__CharityGr__Useri__6383C8BA">
+          <End Role="KidsData" Type="givedbModel.Store.KidsData" Multiplicity="0..1" />
+          <End Role="CharityGroup" Type="givedbModel.Store.CharityGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KidsData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CharityGroup">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KidsData__Accoun__628FA481">
+          <End Role="LoginType" Type="givedbModel.Store.LoginType" Multiplicity="0..1" />
+          <End Role="KidsData" Type="givedbModel.Store.KidsData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KidsData">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__KidTransa__SubWa__5CD6CB2B">
           <End Role="SubWallet" Type="givedbModel.Store.SubWallet" Multiplicity="0..1" />
           <End Role="KidTransaction" Type="givedbModel.Store.KidTransaction" Multiplicity="*" />
@@ -87,6 +139,16 @@
             <End Role="SubWallet" EntitySet="SubWallets" />
             <End Role="KidTransaction" EntitySet="KidTransactions" />
           </AssociationSet>
+          <EntitySet Name="CharityGroups" EntityType="givedbModel.CharityGroup" />
+          <EntitySet Name="LoginTypes" EntityType="givedbModel.LoginType" />
+          <AssociationSet Name="FK__CharityGr__Useri__6383C8BA" Association="givedbModel.FK__CharityGr__Useri__6383C8BA">
+            <End Role="KidsData" EntitySet="KidsDatas" />
+            <End Role="CharityGroup" EntitySet="CharityGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KidsData__Accoun__628FA481" Association="givedbModel.FK__KidsData__Accoun__628FA481">
+            <End Role="LoginType" EntitySet="LoginTypes" />
+            <End Role="KidsData" EntitySet="KidsDatas" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="KidBalance">
           <Key>
@@ -110,6 +172,9 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PrimaryID" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Password" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Account" />
+          <NavigationProperty Name="CharityGroups" Relationship="givedbModel.FK__CharityGr__Useri__6383C8BA" FromRole="KidsData" ToRole="CharityGroup" />
+          <NavigationProperty Name="LoginType" Relationship="givedbModel.FK__KidsData__Accoun__628FA481" FromRole="KidsData" ToRole="LoginType" />
         </EntityType>
         <EntityType Name="KidTransaction">
           <Key>
@@ -159,6 +224,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CharityGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="CharityName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImageLink" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Userid" />
+          <NavigationProperty Name="KidsData" Relationship="givedbModel.FK__CharityGr__Useri__6383C8BA" FromRole="CharityGroup" ToRole="KidsData" />
+        </EntityType>
+        <EntityType Name="LoginType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="AccountType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KidsDatas" Relationship="givedbModel.FK__KidsData__Accoun__628FA481" FromRole="LoginType" ToRole="KidsData" />
+        </EntityType>
+        <Association Name="FK__CharityGr__Useri__6383C8BA">
+          <End Type="givedbModel.KidsData" Role="KidsData" Multiplicity="0..1" />
+          <End Type="givedbModel.CharityGroup" Role="CharityGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KidsData">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CharityGroup">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KidsData__Accoun__628FA481">
+          <End Type="givedbModel.LoginType" Role="LoginType" Multiplicity="0..1" />
+          <End Type="givedbModel.KidsData" Role="KidsData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KidsData">
+              <PropertyRef Name="Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -182,6 +290,7 @@
           <EntitySetMapping Name="KidsDatas">
             <EntityTypeMapping TypeName="givedbModel.KidsData">
               <MappingFragment StoreEntitySet="KidsData">
+                <ScalarProperty Name="Account" ColumnName="Account" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="PrimaryID" ColumnName="PrimaryID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -208,6 +317,25 @@
               <MappingFragment StoreEntitySet="SubWallet">
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="SubWalletType" ColumnName="SubWalletType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CharityGroups">
+            <EntityTypeMapping TypeName="givedbModel.CharityGroup">
+              <MappingFragment StoreEntitySet="CharityGroup">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CharityName" ColumnName="CharityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginTypes">
+            <EntityTypeMapping TypeName="givedbModel.LoginType">
+              <MappingFragment StoreEntitySet="LoginType">
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,0 +1,45 @@
+﻿<main class="main-content bgc-white">
+					<div id="mainContent">
+						<div class="row gap-20 masonry pos-r">
+							<div class="masonry-sizer col-md-8"></div>
+							<div class="masonry-item col-md-8">
+							<div class="bg-green menu-btn row pT-10">
+										
+										<h5 align="left" style="width:70%" class="mL-20 m-10 text-white " ><a href="donate_giv1.html"><i class="ti-arrow-left text-white"></i></a>&emsp;Donate GIV</h4>
+										<div style="width:10%" class="pT-5 fl-r p-5">
+											<span class="help-circle"><i class=" help ti-help"></i></span>
+										</div>
+						    </div>
+								
+												
+													
+														 <div class=" m-10 p-10">
+															 <div class=" peers  bdB bgc-gray cur-p">
+																  <div class="pT-10 peer">
+																		<img src=@ViewBag.image alt="" class="w-3r h-3r ">
+																   </div>
+																   <div class="don-width peer">
+																		<h4 class=" pL-10 pT-10 pB-0 mB-0 fw-800">@ViewBag.Name</h4>
+																		<h6 class=" pL-10 head-text">Charity Organization </h6>
+																   </div>
+																   <div class="form-group">
+																      <h6 class="simple-text">
+																	  @ViewBag.desc
+																	  </h6>
+																   </div>
+																     <div align="center" style="text-align:center;width:100%;" class="form-group">
+																	    <a href="@Url.Action("CharityDonation","Home", new { id = @ViewBag.id,userid=@ViewBag.userid })"><button class="btn btn-wdth green-btn">&emsp;&emsp;&emsp;&emsp;DONATE&emsp;&emsp;&emsp;&emsp;</button></a>
+																	 </div>
+															</div>
+															
+														</div>
+													
+											
+												
+									
+							
+						</div>
+						<!------------------------------------------------------------------------>
+					</div>
+				</div>	
+				</main>

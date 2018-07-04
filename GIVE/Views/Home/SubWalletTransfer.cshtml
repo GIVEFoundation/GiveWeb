@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "Sub Wallet Transfer";
+    ViewBag.PageHeader = "Sub Wallet Transfer";
+}
+<main class="main-content bgc-white">
+    <div id="mainContent">
+        <div class="bg-green menu-btn row">
+
+            <h5 align="left" style="width:70%" class="mL-20 m-10 text-white "><a href="@Url.Action("SubWallet","Home", new { @id = ViewBag.id })"><i class="ti-arrow-left text-white"></i></a>&emsp;Send GIV</h5>
+            <div style="width:10%" class="pT-15 fl-r p-5">
+                <span class="help-circle"><i class=" help ti-help"></i></span>
+            </div>
+        </div>
+        <div class="row gap-20 masonry pos-r">
+            <div class="masonry-sizer col-md-8"></div>
+            <div class="masonry-item col-md-8">
+
+                <div class="bgc-white p-10">
+                    <div class="mT-30">
+                        <form>
+                            <div class="bgc-grey-100 p-10 box-shdw box-border">
+                                <div class="form-group">
+                                    <select style="background: #f9fafb;border: none;" id="selSourceSubWallet" class="pL-10 simple-text fw-600 form-control">
+                                        <option value="freedom" class="fw-700">Freedom</option>
+                                        <option value="give">Give</option>
+                                        <option value="education">Education</option>
+                                        <option value="play">Play</option>
+                                        <option value="saving">Saving</option>
+                                    </select>
+                                    <h5 class="mT-5 mL-2 pT-0 pL-10 head-text"><span id="spanSourceSubWalletBalance">0</span> GIV</h5>
+                                </div>
+                                <hr>
+                                <div class="form-group p-10">
+                                    <select style="background: #f9fafb;border: none;" id="selTargetSubWallet" class="pL-10 simple-text fw-600 form-control">
+                                        <option value="0">Select Sub-Wallet</option>
+                                        <option value="freedom">Freedom</option>
+                                        <option value="give">Give</option>
+                                        <option value="education">Education</option>
+                                        <option value="play">Play</option>
+                                        <option value="saving">Saving</option>
+                                    </select>
+                                    <h5 class="mT-5 mL-2 pT-0 pL-10 head-text"><span id="spanTargetWalletBalance">0</span> GIV</h5>
+                                </div>
+                            </div>
+                            <div class="form-group pT-20">
+                                <h6 class="head-text">How much GIV would you like to transfer ?</h6>
+
+                                <input type="text" class="form-control" name="givamt" id="givamt" placeholder="GIV Amount" required>
+                            </div>
+                            <div align="center" class="form-group">
+                                <a id="btnContinue" class="btn green-btn text-white" data-toggle="modal"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Continue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            </div>
+                            <div class="modal fade" id="confirm" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div align="center" class="modal-body">
+                                            <div class="form-group">
+                                                <h6 class="simple-text">Confirm Transaction?</h6>
+                                            </div>
+                                            <div class="form-group">
+                                                <a class="txt-green fw-600" data-dismiss="modal">CANCEL</a>&emsp;
+                                                <a id="btnConfirm" class="txt-green fw-600" data-toggle="modal">CONFIRM</a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="givconfirm" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+
+                                        <div align="center" class="modal-body">
+                                            <div class="form-group">
+                                                <img class="msg-img" src="assets/static/images/successful.png" alt="submit" />
+                                            </div>
+                                            <div class="form-group">
+                                                <h6 class="simple-text">2 GIV were Successfully  transferred to savings sub-wallet</h6>
+                                            </div>
+                                            <div class="form-group">
+                                                <a href="mywallet.html" class="txt-green fw-600">OK</a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="givcancel" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+
+                                        <div align="center" class="modal-body">
+                                            <div class="form-group">
+                                                <img class="msg-img" src="assets/static/images/unsuccessful.png" alt="submit" />
+                                            </div>
+                                            <div class="form-group">
+                                                <h6 class="simple-text">Something Went wrong during transaction</h6>
+                                            </div>
+                                            <div class="form-group">
+                                                <a href="mywallet.html" class="txt-green fw-600">RETRY</a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        function SourceWalletChange(){
+            var kidp = @ViewBag.id;
+            var walletType = $("#selSourceSubWallet").val();
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetBalance", "Home")',
+                contentType: "application/json; charset=utf-8",
+                data: { kidid: kidp, walletType: walletType },
+                dataType: "json",
+                success: function (data) {
+                    $("#spanSourceSubWalletBalance").html(data);
+                },
+                error: function () { alert('Error occured.'); }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#selSourceSubWallet").val("@ViewBag.selectedSourceSubWallet");
+            SourceWalletChange();
+
+            $("#selSourceSubWallet").change(function(){
+                SourceWalletChange();
+            });
+
+            $("#selTargetSubWallet").change(function(){
+                var kidp = @ViewBag.id;
+                var walletType = $("#selTargetSubWallet").val();
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("GetBalance", "Home")',
+                    contentType: "application/json; charset=utf-8",
+                    data: { kidid: kidp, walletType: walletType },
+                    dataType: "json",
+                    success: function (data) {
+                        $("#spanTargetWalletBalance").html(data);
+                    },
+                    error: function () { alert('Error occured.'); }
+                });
+            });
+            $('#btnContinue').click(function (event) {
+                var sourceBalance = parseInt($("#spanSourceSubWalletBalance").html());
+                var transferAmt = parseInt($("#givamt").val() == "" ? "0" : $("#givamt").val());
+                event.preventDefault();
+                var kidp = @ViewBag.id;
+                
+                if($("#selSourceSubWallet").val() == $("#selTargetSubWallet").val())
+                    alert("Source and Target sub-wallet cannot be the same.");
+                else if($("#selTargetSubWallet").val() == "0")
+                    alert("Please select target sub-wallet.");
+                else if($("#givamt").val() == "" || $("#givamt").val() == "0")
+                    alert("Please provide GIV you want to transfer to sub-wallet.");
+                else if(sourceBalance == 0 || sourceBalance < transferAmt)
+                    alert("Source sub-wallet doesnt have enough balance.");
+                else
+                {
+                    $(this).attr('data-target', '#confirm');
+                }
+            });
+
+            $('#btnConfirm').click(function (event) {
+                event.preventDefault();
+                var kidp = @ViewBag.id;
+                var sourceWallet = $("#selSourceSubWallet").val();
+                var targetWallet = $("#selTargetSubWallet").val();
+                var amt = $("#givamt").val();
+
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("SubWalletTransferConfirm", "Home")',
+                    contentType: "application/json; charset=utf-8",
+                    data: { kidid: kidp, sourceSubWallet: sourceWallet, targetSubWallet:targetWallet, amt: amt },
+                    dataType: "json",
+                    success: function (data) {
+                        if(data){
+                            var url = '@Url.Action("SubWallet", "Home", new {@id=ViewBag.id })';
+                            window.location.href = url; 
+                        }
+                    },
+                    error: function () { alert('Error occured.'); }
+                });
+            });
+        });
+
+    </script>
+
+</main>

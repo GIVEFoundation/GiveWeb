@@ -29,5 +29,7 @@ namespace GIVE
         public DbSet<KidsData> KidsDatas { get; set; }
         public DbSet<KidTransaction> KidTransactions { get; set; }
         public DbSet<SubWallet> SubWallets { get; set; }
+        public DbSet<CharityGroup> CharityGroups { get; set; }
+        public DbSet<LoginType> LoginTypes { get; set; }
     }
 }

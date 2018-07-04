@@ -58,28 +58,29 @@
                         <div class="m-10 row pL-5 pR-5">
 
                             <div class="p-3 img-box2">
-                                <a class="link-style" href="donate_giv1.html">
+                             <a href="@Url.Action("Charity","Home", new { id = 1,userid = @ViewBag.id})" class="link-style">
+                               
                                     <img class="product-img2" src="~/Content/assets/static/images/charity_card2.png"></img>
                                 </a>
                             </div>
 
 
                             <div class="p-3 img-box2">
-                                <a class="link-style" href="#">
+                                <a href="@Url.Action("Charity","Home", new { id = 2,userid = @ViewBag.id })" class="link-style">
                                     <img class="product-img2" src="~/Content/assets/static/images/charity_card.png"></img>
                                 </a>
                             </div>
 
 
                             <div class="p-3 img-box2">
-                                <a class="link-style" href="#">
+                                <a href="@Url.Action("Charity","Home", new { id = 3,userid = @ViewBag.id })" class="link-style">
                                     <img class="product-img2" src="~/Content/assets/static/images/charity_card1.jpg"></img>
                                 </a>
 
                             </div>
 
                         </div>
-                        <a class="link-style" href="#">
+                        <a class="link-style" href="@Url.Action("CharityGroup","Home")">
                             <h6 class="pL-20 fw-600 ">
                                 <i class="ti-arrow-right"></i>&emsp;View More
                             </h6>
